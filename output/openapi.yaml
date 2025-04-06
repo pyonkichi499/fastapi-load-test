@@ -5,7 +5,7 @@ info:
   version: 1.0.0
 servers:
 - description: Local development server
-  url: http://localhost:8000
+  url: http://localhost:8080
 paths:
   /time:
     get:
