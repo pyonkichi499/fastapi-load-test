@@ -1,5 +1,16 @@
 {
-  "dependencies": {
-    "@openapitools/openapi-generator-cli": "^0.0.6"
+  "name": "20241002-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "og": "openapi-generator-cli"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.13.12"
   }
 }
