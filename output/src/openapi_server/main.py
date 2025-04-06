@@ -11,10 +11,9 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 from fastapi import FastAPI
 
-from openapi_server.apis.default_api import router as DefaultApiRouter
+from openapi_server.apis.time_api import router as TimeApiRouter
 
 app = FastAPI(
     title="JST Time API",
@@ -22,4 +21,4 @@ app = FastAPI(
     version="1.0.0",
 )
 
-app.include_router(DefaultApiRouter)
+app.include_router(TimeApiRouter)
