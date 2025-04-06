@@ -4,7 +4,6 @@ from fastapi.testclient import TestClient
 
 from openapi_server.main import app as application
 
-
 @pytest.fixture
 def app() -> FastAPI:
     application.dependency_overrides = {}
