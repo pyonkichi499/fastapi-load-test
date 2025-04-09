@@ -9,5 +9,7 @@
     },
     "python.analysis.extraPaths": [
         "./output/src"
-    ]
+    ],
+    "git.enableCommitSigning": true,
+    "gpgIndicator.statusStyle": "userId"
 }

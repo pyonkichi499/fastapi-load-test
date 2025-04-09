@@ -11,5 +11,7 @@ class TimeApiImpl(BaseTimeApi):
     async def get_current_time(self) -> GetCurrentTime200Response:
         """Returns the current time in Japan Standard Time (JST)"""
         jst = pytz.timezone("Asia/Tokyo")
-        current_time = datetime.now(jst)
+        # datetime.utcnow()を使用し、その後JSTに変換
+        current_time = datetime.utcnow().replace(tzinfo=pytz.UTC)
+        current_time = current_time.astimezone(jst)
         return GetCurrentTime200Response(current_time=current_time)
