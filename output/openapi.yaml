@@ -1,0 +1,36 @@
+openapi: 3.0.0
+info:
+  description: API that returns current time in JST (Japan Standard Time)
+  title: JST Time API
+  version: 1.0.0
+servers:
+- description: Local development server
+  url: http://localhost:8080
+paths:
+  /time:
+    get:
+      description: Returns the current time in Japan Standard Time (JST)
+      operationId: getCurrentTime
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getCurrentTime_200_response'
+          description: Successful response
+      summary: Get current time in JST
+components:
+  schemas:
+    getCurrentTime_200_response:
+      example:
+        current_time: 2000-01-23T04:56:07.000+00:00
+      properties:
+        current_time:
+          description: Current time in JST
+          format: date-time
+          title: current_time
+          type: string
+      required:
+      - current_time
+      title: getCurrentTime_200_response
+      type: object
