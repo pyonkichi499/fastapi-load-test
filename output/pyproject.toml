@@ -1,6 +1,44 @@
+[project]
+name = "fastapi-load-test"
+version = "0.1.0"
+description = "API that returns current time in JST (Japan Standard Time)"
+readme = "README.md"
+requires-python = ">=3.11"
+keywords = ["OpenAPI", "JST", "Time", "API"]
+classifiers = [
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+    "pytz>=2023.3",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "sqlalchemy>=2.0.0",
+    "psycopg2-binary>=2.9.0",
+    "asyncpg>=0.30.0",
+    "greenlet>=3.2.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3.5", "pytest-asyncio>=0.26.0"]
+
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "pytest>=8.3.5",
+    "pytest-asyncio>=0.26.0",
+    "httpx>=0.28.1",
+    "aiosqlite>=0.21.0",
+    "greenlet>=3.2.2",
+    "freezegun>=1.5.1",
+]
 
 [tool.black]
 line-length = 88
@@ -24,13 +62,22 @@ exclude = '''
 [tool.isort]
 profile = "black"
 skip = [
-    '.eggs', '.git', '.hg', '.mypy_cache', '.nox', '.pants.d', '.tox',
-    '.venv', '_build', 'buck-out', 'build', 'dist', 'node_modules', 'venv',
+  '.eggs',
+  '.git',
+  '.hg',
+  '.mypy_cache',
+  '.nox',
+  '.pants.d',
+  '.tox',
+  '.venv',
+  '_build',
+  'buck-out',
+  'build',
+  'dist',
+  'node_modules',
+  'venv',
 ]
 skip_gitignore = true
 
 [tool.pytest.ini_options]
-pythonpath = [
-    "src",
-    "tests",
-]
+pythonpath = ["src", "tests"]
