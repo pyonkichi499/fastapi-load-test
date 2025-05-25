@@ -3,10 +3,12 @@
 from datetime import datetime
 import pytest
 from fastapi.testclient import TestClient
-from openapi_server.models.get_current_time200_response import GetCurrentTime200Response
+from openapi_server.models.get_current_time200_response import (
+    GetCurrentTime200Response
+)
 
 
-def test_get_current_time(client: TestClient):
+def test_現在時刻取得APIが正常にレスポンスを返す(client: TestClient):
     """Test case for get_current_time
 
     Get current time in JST
@@ -25,7 +27,7 @@ def test_get_current_time(client: TestClient):
         pytest.fail("Invalid datetime format in response")
 
 
-def test_get_current_time_response_format(client: TestClient):
+def test_現在時刻取得APIのレスポンス形式が正しい(client: TestClient):
     """Test case for response format of get_current_time
 
     Verify that the response follows the expected format
