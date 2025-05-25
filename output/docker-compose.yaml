@@ -3,7 +3,6 @@ services:
   time-api:
     build:
       context: .
-      target: service
     ports:
       - "8080:8080"
     healthcheck:
