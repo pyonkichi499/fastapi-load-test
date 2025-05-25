@@ -1,33 +1,24 @@
-FROM python:3.11 AS builder
+FROM python:3.11-slim
 
 WORKDIR /usr/src/app
 
-RUN python3 -m venv /venv
-ENV PATH="/venv/bin:$PATH"
+# Create a virtual environment
+RUN python -m venv /opt/venv
+# Activate the virtual environment
+ENV PATH="/opt/venv/bin:$PATH"
 
-RUN pip install --upgrade pip
+# Install dependencies
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy application code
 COPY . .
-RUN pip install --no-cache-dir .
 
+# Set PYTHONPATH to include the src directory
+ENV PYTHONPATH=/usr/src/app/src
 
-# FROM python:3.11 AS test_runner
-# WORKDIR /tmp
-# COPY --from=builder /venv /venv
-# COPY --from=builder /usr/src/app/tests tests
-# ENV PATH=/venv/bin:$PATH
-# ENV PYTHONPATH=/usr/src/app
+# Expose port
+EXPOSE 8080
 
-# # install test dependencies
-# RUN pip install pytest
-
-# # run tests
-# RUN pytest tests
-
-
-FROM python:3.11 AS service
-WORKDIR /root/app/site-packages
-COPY --from=builder /venv /venv
-ENV PATH=/venv/bin:$PATH
-
+# Run the application
 CMD ["uvicorn", "openapi_server.main:app", "--host", "0.0.0.0", "--port", "8080"]
